@@ -97,10 +97,6 @@ Realización de 4 videos demostrativos sobre:
 - **Mosquitto MQTT** 📡
 - **Raspberry Pi** 🍓
 
-## 📎 Enlaces
-- 📌 [Diagrama de conexión](#)
-- 🎥 [Videos de demostración](#)
-- 📝 [Código fuente](#)
 
 🌟 ¡Gracias por visitar nuestro repositorio! 🌟
 
