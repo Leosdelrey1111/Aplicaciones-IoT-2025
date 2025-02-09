@@ -1,0 +1,172 @@
+[
+    {
+        "id": "449a64b1c5865642",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ca65b3c0fddf4a37",
+        "type": "mqtt in",
+        "z": "449a64b1c5865642",
+        "name": "",
+        "topic": "blhd/casa/distancia",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "569d4513d98f881b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "f515614c8b918867"
+            ]
+        ]
+    },
+    {
+        "id": "c944dec4e7d4e6d9",
+        "type": "debug",
+        "z": "449a64b1c5865642",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f515614c8b918867",
+        "type": "function",
+        "z": "449a64b1c5865642",
+        "name": "function 1",
+        "func": "var distancia = msg.payload;\n\nmsg.topic = \"INSERT INTO sensors_details (sensor_id, user_id, value)VALUES (1, 2, '\" + distancia + \"');\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "4ec05f309229fa6e"
+            ]
+        ]
+    },
+    {
+        "id": "4ec05f309229fa6e",
+        "type": "sqlite",
+        "z": "449a64b1c5865642",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "c944dec4e7d4e6d9",
+                "4e11c318a89d1744"
+            ]
+        ]
+    },
+    {
+        "id": "5a531af251af4051",
+        "type": "ui_table",
+        "z": "449a64b1c5865642",
+        "group": "9c73926bf606f7a9",
+        "name": "",
+        "order": 1,
+        "width": "20",
+        "height": "10",
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 610,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4e11c318a89d1744",
+        "type": "sqlite",
+        "z": "449a64b1c5865642",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "fixed",
+        "sql": "SELECT * FROM sensors_details;",
+        "name": "listar Destalle Sensor",
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "5a531af251af4051"
+            ]
+        ]
+    },
+    {
+        "id": "569d4513d98f881b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "13e561a89e7f69b9",
+        "type": "sqlitedb",
+        "db": "C:\\SQLite\\aiot02.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "9c73926bf606f7a9",
+        "type": "ui_group",
+        "name": "Lista Destalle Sesnor",
+        "tab": "178df99a51488ca2",
+        "order": 2,
+        "disp": true,
+        "width": 23,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "178df99a51488ca2",
+        "type": "ui_tab",
+        "name": "Listar Destalle Sensor",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

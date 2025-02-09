@@ -1,0 +1,1055 @@
+[
+    {
+        "id": "f37a50b13b488e5e",
+        "type": "tab",
+        "label": "CRUD",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7f51339f0d673a26",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/user/index",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "48e6d9a2642df5a7"
+            ]
+        ]
+    },
+    {
+        "id": "31234fbc98a35130",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/user/insert",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "4c25499462a70504"
+            ]
+        ]
+    },
+    {
+        "id": "534b5d78991344f8",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/user/update",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "a382113e5b733219"
+            ]
+        ]
+    },
+    {
+        "id": "09ecb46a8773c434",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/user/delete",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 420,
+        "wires": [
+            [
+                "82a41e08f929ee95"
+            ]
+        ]
+    },
+    {
+        "id": "75ac9b7794d63756",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 550,
+        "y": 240,
+        "wires": [
+            [
+                "566338c384373580"
+            ]
+        ]
+    },
+    {
+        "id": "48e6d9a2642df5a7",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "getUsers",
+        "func": "msg.topic = \"SELECT * FROM users;\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "75ac9b7794d63756"
+            ]
+        ]
+    },
+    {
+        "id": "4c25499462a70504",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "insertUsers",
+        "func": "msg.topic = \"INSERT INTO users (email,pass) VALUES('\" + msg.payload.email + \"','\" + msg.payload.pass + \"' );\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 300,
+        "wires": [
+            [
+                "d85cbfbc7dfcfe81"
+            ]
+        ]
+    },
+    {
+        "id": "d85cbfbc7dfcfe81",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 550,
+        "y": 300,
+        "wires": [
+            [
+                "a1911ac27489c05f"
+            ]
+        ]
+    },
+    {
+        "id": "a382113e5b733219",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "updateUsers",
+        "func": "msg.topic = \"UPDATE users SET pass = '\" + msg.payload.pass + \"', email= '\" + msg.payload.email + \"' WHERE id =\"+msg.payload.id+\";\";\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "7a8c523385a22c69"
+            ]
+        ]
+    },
+    {
+        "id": "82a41e08f929ee95",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "deleteUser",
+        "func": "msg.topic = \"DELETE FROM users \"+\n \"WHERE id =\"+msg.payload.id+\";\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "c3bb27b6440a852a"
+            ]
+        ]
+    },
+    {
+        "id": "7a8c523385a22c69",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 550,
+        "y": 360,
+        "wires": [
+            [
+                "eb241915c1e439a4"
+            ]
+        ]
+    },
+    {
+        "id": "c3bb27b6440a852a",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 550,
+        "y": 420,
+        "wires": [
+            [
+                "eb241915c1e439a4"
+            ]
+        ]
+    },
+    {
+        "id": "566338c384373580",
+        "type": "json",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 690,
+        "y": 240,
+        "wires": [
+            [
+                "b9a922579b5e8756"
+            ]
+        ]
+    },
+    {
+        "id": "b9a922579b5e8756",
+        "type": "template",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en-GB\">\n<head>\n<title>Users</title>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css\" />\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>;\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>;\n<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css\" />\n<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css\" />\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js\"></script >\n\n<script type=\"text/javascript\">\n$(function () {\n\nvar db = {{#payload}}{{{.}}}{{/payload}};\n\n$(\"#jsgrid\").jsGrid({\nwidth: \"100%\",\ninserting: true,\nediting: true,\nsorting: true,\npaging: true,\n\ndata: db,\n\nfields: [\n{ title:\"ID\", name: \"id\", type: \"text\", width: 50,readOnly:true },\n{ title:\"Email\", name: \"email\", type: \"text\", width: 50 },\n{ title:\"Password\", name: \"pass\", type: \"text\", width: 50 },\n{ title:\"Registration Date\", name: \"record_at\",\n type:\"text\", width: 50, readOnly:true},\n{ type: \"control\" }\n],\n\ncontroller: {\ninsertItem: function(item) {\nreturn $.ajax({\ntype: \"POST\",\nurl: \"/user/insert\",\ndata: item\n});\n},\nupdateItem: function(item) {\nreturn $.ajax({\ntype: \"PUT\",\nurl: \"/user/update\",\ndata: item\n});\n},\ndeleteItem: function(item) {\nreturn $.ajax({\ntype: \"DELETE\",\nurl: \"/user/delete\",\ndata: item\n});\n}\n}\n});\n});\n\n</script>\n</head>\n<body class=\"container\">\n<section class=\"row\">\n\n<div class=\"col-md-6\"></div>\n<div class=\"col-md-6\" id=\"jsgrid\">\n</div>\n</section>\n</body>\n</html>",
+        "output": "str",
+        "x": 860,
+        "y": 240,
+        "wires": [
+            [
+                "c4e1ba90269cdf91"
+            ]
+        ]
+    },
+    {
+        "id": "c4e1ba90269cdf91",
+        "type": "http response",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1050,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a1911ac27489c05f",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "getLastSaved",
+        "func": "msg.topic = \n\"SELECT * FROM users WHERE id =\"+ \n\"(SELECT MAX(id) FROM users);\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 440,
+        "wires": [
+            [
+                "8f65d8bf2598e338"
+            ]
+        ]
+    },
+    {
+        "id": "8f65d8bf2598e338",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "ddi2",
+        "x": 910,
+        "y": 420,
+        "wires": [
+            [
+                "218d469cfd50329c"
+            ]
+        ]
+    },
+    {
+        "id": "218d469cfd50329c",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "showSaved",
+        "func": "var item = {\n    id: msg.payload[0].id,\n    username: msg.payload[0].username,\n    email: msg.payload[0].email,\n    registration_date: msg.payload[0].registration_date\n}\nif (item.id == \"\" || item.username == \"\" ||\n    item.email ==\"\" || item.registration_date ==\"\"){\n    msg.statusCode=400,\n    msg.payload = null;\n    return msg;\n}\nmsg.payload = item;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 340,
+        "wires": [
+            [
+                "c4e1ba90269cdf91"
+            ]
+        ]
+    },
+    {
+        "id": "eb241915c1e439a4",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "reload",
+        "func": "msg.payload = msg.result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 360,
+        "wires": [
+            [
+                "c4e1ba90269cdf91"
+            ]
+        ]
+    },
+    {
+        "id": "e5c8fc8feeb262e8",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors/index",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 580,
+        "wires": [
+            [
+                "60002112da8bb646"
+            ]
+        ]
+    },
+    {
+        "id": "94d12cd766f13422",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors/insert",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 640,
+        "wires": [
+            [
+                "07dee2b0c63f8757"
+            ]
+        ]
+    },
+    {
+        "id": "5c857336499234bb",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors/update",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 700,
+        "wires": [
+            [
+                "f103294e506bfd32"
+            ]
+        ]
+    },
+    {
+        "id": "f1e5c9316e4e9c14",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors/delete",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 760,
+        "wires": [
+            [
+                "44c649d34589f163"
+            ]
+        ]
+    },
+    {
+        "id": "54969aaf809147f1",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 530,
+        "y": 580,
+        "wires": [
+            [
+                "60ad67cb0a668718"
+            ]
+        ]
+    },
+    {
+        "id": "60002112da8bb646",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "getSensors",
+        "func": "msg.topic = \"SELECT * FROM sensors;\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 580,
+        "wires": [
+            [
+                "54969aaf809147f1"
+            ]
+        ]
+    },
+    {
+        "id": "07dee2b0c63f8757",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "insertSensors",
+        "func": "msg.topic = \"INSERT INTO sensors (name,type) VALUES('\" + msg.payload.name + \"','\" + msg.payload.type + \"' );\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 640,
+        "wires": [
+            [
+                "ddd87018bb16ba8b"
+            ]
+        ]
+    },
+    {
+        "id": "ddd87018bb16ba8b",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 530,
+        "y": 640,
+        "wires": [
+            [
+                "856c9111cf552d7d"
+            ]
+        ]
+    },
+    {
+        "id": "f103294e506bfd32",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "updateSensors",
+        "func": "msg.topic = \"UPDATE sensors SET name = '\" + msg.payload.name + \"', type= '\" + msg.payload.type + \"' WHERE id =\"+msg.payload.id+\";\";\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 700,
+        "wires": [
+            [
+                "529b331adbf3972a"
+            ]
+        ]
+    },
+    {
+        "id": "44c649d34589f163",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "deleteSensors",
+        "func": "msg.topic = \"DELETE FROM sensors \"+\n \"WHERE id =\"+msg.payload.id+\";\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 760,
+        "wires": [
+            [
+                "468b75fd4f6a8098"
+            ]
+        ]
+    },
+    {
+        "id": "529b331adbf3972a",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 530,
+        "y": 700,
+        "wires": [
+            [
+                "274499aa130612b1"
+            ]
+        ]
+    },
+    {
+        "id": "468b75fd4f6a8098",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 530,
+        "y": 760,
+        "wires": [
+            [
+                "274499aa130612b1"
+            ]
+        ]
+    },
+    {
+        "id": "60ad67cb0a668718",
+        "type": "json",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 670,
+        "y": 580,
+        "wires": [
+            [
+                "f1b0e090528597ba"
+            ]
+        ]
+    },
+    {
+        "id": "f1b0e090528597ba",
+        "type": "template",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en-GB\">\n<head>\n<title>Users</title>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css\" />\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>;\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>;\n<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css\" />\n<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css\" />\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js\"></script >\n\n<script type=\"text/javascript\">\n$(function () {\n\nvar db = {{#payload}}{{{.}}}{{/payload}};\n\n$(\"#jsgrid\").jsGrid({\nwidth: \"100%\",\ninserting: true,\nediting: true,\nsorting: true,\npaging: true,\n\ndata: db,\n\nfields: [\n{ title:\"ID\", name: \"id\", type: \"text\", width: 50,readOnly:true },\n{ title:\"Name\", name: \"name\", type: \"text\", width: 50 },\n{ title:\"Type\", name: \"type\", type: \"text\", width: 50 },\n{ title:\"Registration Date\", name: \"record_at\",\n type:\"text\", width: 50, readOnly:true},\n{ type: \"control\" }\n],\n\ncontroller: {\ninsertItem: function(item) {\nreturn $.ajax({\ntype: \"POST\",\nurl: \"/sensors/insert\",\ndata: item\n});\n},\nupdateItem: function(item) {\nreturn $.ajax({\ntype: \"PUT\",\nurl: \"/sensors/update\",\ndata: item\n});\n},\ndeleteItem: function(item) {\nreturn $.ajax({\ntype: \"DELETE\",\nurl: \"/sensors/delete\",\ndata: item\n});\n}\n}\n});\n});\n\n</script>\n</head>\n<body class=\"container\">\n<section class=\"row\">\n\n<div class=\"col-md-6\"></div>\n<div class=\"col-md-6\" id=\"jsgrid\">\n</div>\n</section>\n</body>\n</html>",
+        "output": "str",
+        "x": 840,
+        "y": 580,
+        "wires": [
+            [
+                "0297a3af3312f078"
+            ]
+        ]
+    },
+    {
+        "id": "0297a3af3312f078",
+        "type": "http response",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1030,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "856c9111cf552d7d",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "getLastSaved",
+        "func": "msg.topic = \n\"SELECT * FROM users WHERE id =\"+ \n\"(SELECT MAX(id) FROM users);\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 780,
+        "wires": [
+            [
+                "a24cbe680ab0df09"
+            ]
+        ]
+    },
+    {
+        "id": "a24cbe680ab0df09",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "ddi2",
+        "x": 890,
+        "y": 760,
+        "wires": [
+            [
+                "1cea10c9f4e52050"
+            ]
+        ]
+    },
+    {
+        "id": "1cea10c9f4e52050",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "showSaved",
+        "func": "var item = {\n    id: msg.payload[0].id,\n    name: msg.payload[0].name,\n    type: msg.payload[0].type,\n    registration_date: msg.payload[0].record_at\n}\nif (item.id == \"\" || item.name == \"\" ||\n    item.type ==\"\" || item.record_at ==\"\"){\n    msg.statusCode=400,\n    msg.payload = null;\n    return msg;\n}\nmsg.payload = item;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 680,
+        "wires": [
+            [
+                "0297a3af3312f078"
+            ]
+        ]
+    },
+    {
+        "id": "274499aa130612b1",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "reload",
+        "func": "msg.payload = msg.result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 700,
+        "wires": [
+            [
+                "0297a3af3312f078"
+            ]
+        ]
+    },
+    {
+        "id": "5a0c7a809ca7e5d3",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors_d/index",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 900,
+        "wires": [
+            [
+                "383030252ce5f2c0"
+            ]
+        ]
+    },
+    {
+        "id": "8bb579f54b4dbd59",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors_d/insert",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 960,
+        "wires": [
+            [
+                "7b78e65845f622bb"
+            ]
+        ]
+    },
+    {
+        "id": "e80fdfd1ed381bee",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors_d/update",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 1020,
+        "wires": [
+            [
+                "5cc05426896c6b75"
+            ]
+        ]
+    },
+    {
+        "id": "d597635385d7c1ec",
+        "type": "http in",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "url": "/sensors_d/delete",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1080,
+        "wires": [
+            [
+                "6be2a63a83a371ce"
+            ]
+        ]
+    },
+    {
+        "id": "a865331a09669234",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 510,
+        "y": 900,
+        "wires": [
+            [
+                "8fdbf0aede068e0c",
+                "4fcd9660cdbb51eb"
+            ]
+        ]
+    },
+    {
+        "id": "383030252ce5f2c0",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "getSensors",
+        "func": "msg.topic = \"SELECT * FROM sensors_details;\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 900,
+        "wires": [
+            [
+                "a865331a09669234"
+            ]
+        ]
+    },
+    {
+        "id": "7b78e65845f622bb",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "insertUsers",
+        "func": "msg.topic = \"INSERT INTO sensors_details (sensor_id, user_id, value) VALUES('\" + msg.payload.sensor_id + \"','\" + msg.payload.user_id + \"','\" + msg.payload.value + \"' );\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 960,
+        "wires": [
+            [
+                "d9405b2b4f7f09a4"
+            ]
+        ]
+    },
+    {
+        "id": "d9405b2b4f7f09a4",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 510,
+        "y": 960,
+        "wires": [
+            [
+                "c24e13c2d5c303c8",
+                "17cab465054cbc66"
+            ]
+        ]
+    },
+    {
+        "id": "5cc05426896c6b75",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "updateUsers",
+        "func": "msg.topic = \"UPDATE sensors_details SET sensor_id = '\" + msg.payload.sensor_id + \"', user_id= '\" + msg.payload.user_id + \"', value= '\"+msg.payload.value +\"' WHERE id =\"+msg.payload.id+\";\";\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1020,
+        "wires": [
+            [
+                "8373eee307e02ec7"
+            ]
+        ]
+    },
+    {
+        "id": "6be2a63a83a371ce",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "deleteUser",
+        "func": "msg.topic = \"DELETE FROM sensors_details \"+\n \"WHERE id =\"+msg.payload.id+\";\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1080,
+        "wires": [
+            [
+                "055f15de5c8c3372"
+            ]
+        ]
+    },
+    {
+        "id": "8373eee307e02ec7",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 510,
+        "y": 1020,
+        "wires": [
+            [
+                "36d8342444a41af7",
+                "17cab465054cbc66"
+            ]
+        ]
+    },
+    {
+        "id": "055f15de5c8c3372",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "aiot02",
+        "x": 510,
+        "y": 1080,
+        "wires": [
+            [
+                "36d8342444a41af7",
+                "17cab465054cbc66"
+            ]
+        ]
+    },
+    {
+        "id": "8fdbf0aede068e0c",
+        "type": "json",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 650,
+        "y": 900,
+        "wires": [
+            [
+                "5e25fdcb8e0ea727"
+            ]
+        ]
+    },
+    {
+        "id": "5e25fdcb8e0ea727",
+        "type": "template",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en-GB\">\n<head>\n<title>Users</title>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css\" />\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>;\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>;\n<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css\" />\n<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css\" />\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js\"></script >\n\n<script type=\"text/javascript\">\n$(function () {\n\nvar db = {{#payload}}{{{.}}}{{/payload}};\n\n$(\"#jsgrid\").jsGrid({\nwidth: \"100%\",\ninserting: true,\nediting: true,\nsorting: true,\npaging: true,\n\ndata: db,\n\nfields: [\n{ title:\"ID\", name: \"id\", type: \"text\", width: 50,readOnly:true },\n{ title:\"SensorId\", name: \"sensor_id\", type: \"text\", width: 50 },\n{ title:\"UserId\", name: \"user_id\", type: \"text\", width: 50 },\n{ title:\"Value\", name: \"value\", type: \"text\", width: 50 },\n{ title:\"Registration Date\", name: \"record_ay\",\n type:\"text\", width: 50, readOnly:true},\n{ type: \"control\" }\n],\n\ncontroller: {\ninsertItem: function(item) {\nreturn $.ajax({\ntype: \"POST\",\nurl: \"/sensors_d/insert\",\ndata: item\n});\n},\nupdateItem: function(item) {\nreturn $.ajax({\ntype: \"PUT\",\nurl: \"/sensors_d/update\",\ndata: item\n});\n},\ndeleteItem: function(item) {\nreturn $.ajax({\ntype: \"DELETE\",\nurl: \"/sensors_d/delete\",\ndata: item\n});\n}\n}\n});\n});\n\n</script>\n</head>\n<body class=\"container\">\n<section class=\"row\">\n\n<div class=\"col-md-6\"></div>\n<div class=\"col-md-6\" id=\"jsgrid\">\n</div>\n</section>\n</body>\n</html>",
+        "output": "str",
+        "x": 820,
+        "y": 900,
+        "wires": [
+            [
+                "157c6e5a4dcb902a"
+            ]
+        ]
+    },
+    {
+        "id": "157c6e5a4dcb902a",
+        "type": "http response",
+        "z": "f37a50b13b488e5e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "c24e13c2d5c303c8",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "getLastSaved",
+        "func": "msg.topic = \n\"SELECT * FROM users WHERE id =\"+ \n\"(SELECT MAX(id) FROM users);\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 1100,
+        "wires": [
+            [
+                "ebf2c585da88df45"
+            ]
+        ]
+    },
+    {
+        "id": "ebf2c585da88df45",
+        "type": "sqlite",
+        "z": "f37a50b13b488e5e",
+        "mydb": "13e561a89e7f69b9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "ddi2",
+        "x": 870,
+        "y": 1080,
+        "wires": [
+            [
+                "ad8d4b6a6e1a3561",
+                "17cab465054cbc66"
+            ]
+        ]
+    },
+    {
+        "id": "ad8d4b6a6e1a3561",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "showSaved",
+        "func": "var item = {\n    id: msg.payload[0].id,\n    sensor_id: msg.payload[0].sensor_id,\n    user_id: msg.payload[0].user_id,\n    value: msg.payload[0].value,\n    record_ay: msg.payload[0].record_ay\n}\nif (item.id == \"\" || item.sensor_id == \"\" ||\n    item.user_id ==\"\" || item.value == \"\" || item.record_ay ==\"\"){\n    msg.statusCode=400,\n    msg.payload = null;\n    return msg;\n}\nmsg.payload = item;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 1000,
+        "wires": [
+            [
+                "157c6e5a4dcb902a"
+            ]
+        ]
+    },
+    {
+        "id": "36d8342444a41af7",
+        "type": "function",
+        "z": "f37a50b13b488e5e",
+        "name": "reload",
+        "func": "msg.payload = msg.result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1020,
+        "wires": [
+            [
+                "157c6e5a4dcb902a"
+            ]
+        ]
+    },
+    {
+        "id": "17cab465054cbc66",
+        "type": "debug",
+        "z": "f37a50b13b488e5e",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "4fcd9660cdbb51eb",
+        "type": "debug",
+        "z": "f37a50b13b488e5e",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "13e561a89e7f69b9",
+        "type": "sqlitedb",
+        "db": "C:\\SQLite\\aiot02.db",
+        "mode": "RWC"
+    }
+]
