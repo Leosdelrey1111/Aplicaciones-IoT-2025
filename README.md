@@ -26,7 +26,7 @@ Este repositorio contiene la documentación y el código de los ejercicios asign
 | Integrante | Evaluación Cisco |
 |--------------|--------------|
 | Brayan Leonel Hernández Díaz | ![WhatsApp Image 2025-02-08 at 19 46 43_353a6b08](https://github.com/user-attachments/assets/b8ba5663-a549-4352-b08c-21847d316ac1)| 
-|Jennifer Ailin Medina Hernández |  |
+|Jennifer Ailin Medina Hernández |  <img src= "https://github.com/user-attachments/assets/8f45df83-38aa-47c3-a9a9-71a6943b6dd4" width="300"/>|
 | Cecilia Aurora Robelo Hernández | ![image](https://github.com/user-attachments/assets/8021111b-70c3-4be7-b4d4-a1ec5268194b)|
 
 ### 🛠️ Parte Práctica Pareja
