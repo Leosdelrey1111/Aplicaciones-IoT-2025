@@ -1,66 +1,83 @@
 # Proyecto IoT - Python y Raspberry Pi
 
+### 📌 Autores
+| Nombre | Brayan Leonel Hernández Díaz | xxxx|xxxx|
+|--------------|--------------|--------------|--------------|
+| Numero de control | 1223100409 |  ||
+| Grupo | GDS0652 | GDS0652 | GDS0652 |
+
+📅 **Fecha de entrega:** _10/02/2025_
+
+
 ## 📌 Descripción
 Este repositorio contiene la documentación y el código de los ejercicios asignados en el curso **NetAcad Python Fundamentals 2**, enfocados en el desarrollo de sistemas IoT con **Raspberry Pi**, **Node-RED**, **PostgreSQL** y **Mosquitto**.
 
 ## 📁 Contenido del Repositorio
 
-### 📜 Parte Teórica (30 puntos - Individual)
+### 📜 Parte Teórica
 - **Ejercicios asignados del curso NetAcad Python Fundamentals 2**
   - Tipos de datos y estructuras básicas en Python.
   - Funciones y manejo de archivos.
   - Control de flujo (condicionales y bucles).
   - Introducción a librerías de IoT en Python.
 - **Evidencias:**
-  - 📷 Capturas de pantalla de los ejercicios terminados (15 puntos)
-  - 📜 Cuestionario final asignado por el docente (15 puntos)
+  
+| Integrante | Evaluación Cisco |
+|--------------|--------------|
+| Brayan Leonel Hernández Díaz | ![WhatsApp Image 2025-02-08 at 19 46 43_353a6b08](https://github.com/user-attachments/assets/b8ba5663-a549-4352-b08c-21847d316ac1). | 
+| xxx |  |
+| xxx |  |
 
-### 🛠️ Parte Práctica (60 puntos - Parejas)
+### 🛠️ Parte Práctica Pareja
 
-#### **Ejercicio 1: Almacenamiento de Datos (15 puntos)**
+#### **Ejercicio 1: Almacenamiento de Datos**
 📌 Diseñar un sistema IoT que capture datos desde un sensor y los almacene en PostgreSQL mediante Node-RED.
+- [EJERCICIO 1 - DRIVE](https://drive.google.com/drive/folders/1JnLFcRFwHqVU8haljCm9o4Cvo7aa4LZl?usp=sharing)
 
-✅ **Evidencias:**
-- 🖼️ Diagrama de conexión (5 puntos)
-- 📌 Código documentado en GitHub (5 puntos)
-- 🎥 Video mostrando el funcionamiento (5 puntos)
-
-#### **Ejercicio 2: Control de Actuadores (15 puntos)**
+#### **Ejercicio 2: Control de Actuadores**
 📌 Diseñar un sistema IoT que controle un actuador basado en la lectura de un sensor o entrada.
+- [EJERCICIO 2 - DRIVE](https://drive.google.com/drive/folders/1XJG1QhBlhkNqQYG5Fs0tHn1vsYfZzA_2?usp=sharing)
 
-✅ **Evidencias:**
-- 🖼️ Diagrama de conexión (5 puntos)
-- 📌 Código documentado en GitHub (5 puntos)
-- 🎥 Video demostrando la funcionalidad (5 puntos)
-
-### 🎥 Ejercicios en Clase: Videos Demostrativos (10 puntos - Individual)
+#### 🎥 Ejercicios en Clase: Videos Demostrativos (Individual)
 Realización de 4 videos demostrativos sobre:
 1. CRUD en PostgreSQL con Node-RED o Python (2.5 puntos)
 2. Instalaciones y Configuraciones Básicas en Raspberry Pi (2.5 puntos)
 3. Control de LED y Botón en Raspberry Pi (2.5 puntos)
 4. Conexión MQTT en Node-RED con Mosquitto (2.5 puntos)
 
-✅ **Evidencias:**
-- 📤 Subir cada video al repositorio de GitHub.
-- 📄 Explicación breve de los pasos realizados en cada video.
+✅ **Evidencias Individuales:**
 
-### 🔧 Ejercicios 3 y 4: Soldadura (20 puntos - Individual)
+| Integrante | Evaluación Cisco |
+|-------------|--------------|
+| Brayan Leonel Hernández Díaz | [link de drive](https://drive.google.com/drive/folders/1vB3tWRWw8eRMSLwjO5PWPB1Z1qMOLKNb?usp=sharing)| 
+| xxx |  |
+| xxx |  |
+
+
+### 🔧 Ejercicios 3 y 4: Soldadura (Individual)
 
 #### **Ejercicio 3 (10 puntos): Circuito funcional en placa fenólica**
 📌 Realización de un circuito funcional simulando soldadura en una placa fenólica.
 
 ✅ **Evidencias:**
-- 🔍 Demostración al docente de la placa (5 puntos)
-- 📷 Fotografía en el repositorio (5 puntos)
+
+| Integrante| Componente | imagen |
+|--------------|--------------|--------------|
+| Brayan Leonel Hernádez Díaz| placa fenólica | <img src="https://github.com/user-attachments/assets/ec6b9e9a-03b5-4001-af4c-5e5eeb8fce43" width="200"> |
+|| xxx |  |
+|| xxx |  |
 
 #### **Ejercicio 4 (10 puntos): Figura 2D o 3D soldada**
 📌 Construcción de una figura 2D o 3D con al menos 40 puntos de soldadura e integración de componentes electrónicos.
 
 ✅ **Evidencias:**
-- 🎤 Exposición al docente de la figura (5 puntos)
-- 📷 Fotografía en el repositorio (5 puntos)
 
----
+| Integrante | Figura | imagen |
+|--------------|--------------|--------------|
+| Brayan Leonel Hernádez Díaz | zorro | <img src="https://github.com/user-attachments/assets/9b531730-822b-45ac-a679-d0506dba5f3b" width="300"> |
+|| xxx |  |
+|| xxx |  |
+
 ## 🎯 Objetivos del Proyecto
 
 ✔️ Aplicar conceptos de **Python** en un entorno **IoT**.
@@ -84,15 +101,6 @@ Realización de 4 videos demostrativos sobre:
 - 📌 [Diagrama de conexión](#)
 - 🎥 [Videos de demostración](#)
 - 📝 [Código fuente](#)
-
-📢 **Recuerda subir todas las evidencias a GitHub para obtener la calificación completa.**
-
----
-### 📌 Autores
-✏️ **Nombre del Integrante 1**
-✏️ **Nombre del Integrante 2**
-
-📅 **Fecha de entrega:** _DD/MM/AAAA_
 
 🌟 ¡Gracias por visitar nuestro repositorio! 🌟
 
