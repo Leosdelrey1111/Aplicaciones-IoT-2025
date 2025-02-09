@@ -1,0 +1,263 @@
+[
+    {
+        "id": "9dcdf2456c8e8c34",
+        "type": "tab",
+        "label": "Ejercicio1Basberry",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c3547d74e3b1dcb6",
+        "type": "inject",
+        "z": "9dcdf2456c8e8c34",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 460,
+        "y": 320,
+        "wires": [
+            [
+                "18fdd5dfc14b60cd"
+            ]
+        ]
+    },
+    {
+        "id": "f1d52509250edda2",
+        "type": "ui_table",
+        "z": "9dcdf2456c8e8c34",
+        "group": "ab6defb3d93acf0f",
+        "name": "",
+        "order": 1,
+        "width": "26",
+        "height": "10",
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 860,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "18fdd5dfc14b60cd",
+        "type": "postgresql",
+        "z": "9dcdf2456c8e8c34",
+        "name": "Postgresql",
+        "query": "SELECT * FROM  sensor_details;",
+        "postgreSQLConfig": "7640f8aedb7b3495",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 680,
+        "y": 320,
+        "wires": [
+            [
+                "f1d52509250edda2"
+            ]
+        ]
+    },
+    {
+        "id": "8944d0d3389c7cc1",
+        "type": "postgresql",
+        "z": "9dcdf2456c8e8c34",
+        "name": "INSERT sensors",
+        "query": "INSERT INTO sensor_details(sensor_id, user_id, value) VALUES(1, 1,'{{{msg.payload}}}');",
+        "postgreSQLConfig": "7640f8aedb7b3495",
+        "split": true,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 620,
+        "y": 240,
+        "wires": [
+            [
+                "67f4108ec99d0a88"
+            ]
+        ]
+    },
+    {
+        "id": "8910504ce82ac3e0",
+        "type": "mqtt in",
+        "z": "9dcdf2456c8e8c34",
+        "name": "",
+        "topic": "jla/ejercicio",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "98e5eb5ce4d58ec2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "8944d0d3389c7cc1"
+            ]
+        ]
+    },
+    {
+        "id": "67f4108ec99d0a88",
+        "type": "debug",
+        "z": "9dcdf2456c8e8c34",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "3b5e628dce341bd5",
+        "type": "mqtt in",
+        "z": "9dcdf2456c8e8c34",
+        "name": "Recibir Datos del Sensor",
+        "topic": "jla/ejercicio",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "98e5eb5ce4d58ec2",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 430,
+        "y": 420,
+        "wires": [
+            [
+                "116bcd015dc80dea"
+            ]
+        ]
+    },
+    {
+        "id": "116bcd015dc80dea",
+        "type": "function",
+        "z": "9dcdf2456c8e8c34",
+        "name": "Procesar Datos",
+        "func": "var payload = msg.payload.split(',');\nvar distancia = parseFloat(payload[0]);\nvar color = payload[1];\n\nmsg.payload = {\n    distancia: distancia,\n    color: color\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 420,
+        "wires": [
+            [
+                "e1ec39a0bab9cfdd"
+            ]
+        ]
+    },
+    {
+        "id": "e1ec39a0bab9cfdd",
+        "type": "ui_text",
+        "z": "9dcdf2456c8e8c34",
+        "group": "ab6defb3d93acf0f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Mostrar Datos",
+        "label": "Distancia: ",
+        "format": "{{msg.payload.distancia}} cm ({{msg.payload.color}})",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 930,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "ab6defb3d93acf0f",
+        "type": "ui_group",
+        "name": "Sensor",
+        "tab": "ca63d704f3e0f901",
+        "order": 1,
+        "disp": true,
+        "width": 29,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7640f8aedb7b3495",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "localhost",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "98e5eb5ce4d58ec2",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.0.24",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ca63d704f3e0f901",
+        "type": "ui_tab",
+        "name": "Tab 1",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
