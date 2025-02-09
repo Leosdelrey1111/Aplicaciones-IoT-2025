@@ -1,10 +1,11 @@
 # Proyecto IoT - Python y Raspberry Pi
 
 ### 📌 Autores
-| Nombre | Brayan Leonel Hernández Díaz | xxxx|xxxx|
+| Nombre | Brayan Leonel Hernández Díaz | Jennifer Ailin Medina Hernández |xxxx|
 |--------------|--------------|--------------|--------------|
-| Numero de control | 1223100409 |  ||
+| Numero de control | 1223100409 | 1223100426 ||
 | Grupo | GDS0652 | GDS0652 | GDS0652 |
+
 
 📅 **Fecha de entrega:** _10/02/2025_
 
@@ -25,7 +26,7 @@ Este repositorio contiene la documentación y el código de los ejercicios asign
 | Integrante | Evaluación Cisco |
 |--------------|--------------|
 | Brayan Leonel Hernández Díaz | ![WhatsApp Image 2025-02-08 at 19 46 43_353a6b08](https://github.com/user-attachments/assets/b8ba5663-a549-4352-b08c-21847d316ac1). | 
-| xxx |  |
+|Jennifer Ailin Medina Hernández |  |
 | xxx |  |
 
 ### 🛠️ Parte Práctica Pareja
@@ -47,10 +48,10 @@ Realización de 4 videos demostrativos sobre:
 
 ✅ **Evidencias Individuales:**
 
-| Integrante | Evaluación Cisco |
+| Integrante | Link Drive |
 |-------------|--------------|
 | Brayan Leonel Hernández Díaz | [link de drive](https://drive.google.com/drive/folders/1vB3tWRWw8eRMSLwjO5PWPB1Z1qMOLKNb?usp=sharing)| 
-| xxx |  |
+| Jennifer Ailin Medina Hernández | [link de drive](https://drive.google.com/drive/folders/1kAKOLumzUGhAVEwSoRONLwnz1y8IvEsS?usp=drive_link)  |
 | xxx |  |
 
 
@@ -64,7 +65,7 @@ Realización de 4 videos demostrativos sobre:
 | Integrante| Componente | imagen |
 |--------------|--------------|--------------|
 | Brayan Leonel Hernádez Díaz| placa fenólica | <img src="https://github.com/user-attachments/assets/ec6b9e9a-03b5-4001-af4c-5e5eeb8fce43" width="200"> |
-|| xxx |  |
+|Jennifer Ailin Medina Hernández| Placa fenólifica | <img src="https://github.com/user-attachments/assets/63c204df-2ced-4e40-9b88-6aa24e58ab4e" width="300"/> |
 || xxx |  |
 
 #### **Ejercicio 4 (10 puntos): Figura 2D o 3D soldada**
@@ -75,7 +76,7 @@ Realización de 4 videos demostrativos sobre:
 | Integrante | Figura | imagen |
 |--------------|--------------|--------------|
 | Brayan Leonel Hernádez Díaz | zorro | <img src="https://github.com/user-attachments/assets/9b531730-822b-45ac-a679-d0506dba5f3b" width="300"> |
-|| xxx |  |
+| Jennifer Ailin Medina Hernández | Master Chief  |<img src="https://github.com/user-attachments/assets/15355da9-a076-4e5b-aef8-9a89fd65815b" width="300"/> |
 || xxx |  |
 
 ## 🎯 Objetivos del Proyecto
